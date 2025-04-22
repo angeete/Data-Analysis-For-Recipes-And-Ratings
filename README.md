@@ -107,6 +107,98 @@ We also used this groupby object to extract the number of ingredients for each r
 |         4 |              5073 |           376743 |         66646.5 |          275074 |          318040 |          370418 |          428373 |          536734 |                   5073 |               85.6803 |              879.584 |                    1 |                   10 |                   20 |                   40 |                43202 |                          5073 |                  5.71414e+06 |                 9.76034e+07 |                        1533 |                      233780 |                      461724 |                      784869 |                 2.00111e+09 |                         5073 |                     7.15119 |                    3.01616 |                          1 |                          5 |                          7 |                          9 |                         24 |                     5073 |                  376743 |                66646.5 |                 275074 |                 318040 |                 370418 |                 428373 |                 536734 |                      5073 |                  4.52388 |                0.952943 |                       0 |                 4.33333 |                       5 |                       5 |                       5 |                 5073 |            1.428    |           14.6597  |          0.0166667 |          0.166667  |          0.333333  |           0.666667 |            720.033 |                    5073 |                344.003 |               816.228 |                   0   |               124.7   |                230.1  |                388.1  |               45609   |                   5073 |               24.4059 |              69.6774 |                    0 |                    3 |                   11 |                   32 |                 4356 |                          5073 |                     0.117025 |                    0.105029 |                           0 |                   0         |                   0.101626  |                    0.179519 |                     1       |                          5073 |                   0.0110179  |                   0.0411809 |                           0 |                           0 |                           0 |                           0 |                    0.735555 |
 |         5 |              6146 |           377089 |         66724.8 |          275035 |          319483 |          370527 |          428318 |          537459 |                   6146 |               84.1032 |              688.125 |                    1 |                   15 |                   25 |                   50 |                30240 |                          6146 |                  1.0292e+07  |                 1.34322e+08 |                        1533 |                      228458 |                      461724 |                      808027 |                 2.00223e+09 |                         6146 |                     7.63781 |                    3.11493 |                          1 |                          5 |                          7 |                          9 |                         28 |                     6146 |                  377089 |                66724.8 |                 275035 |                 319483 |                 370527 |                 428318 |                 537459 |                      6146 |                  4.48961 |                0.965835 |                       0 |                 4.2     |                       5 |                       5 |                       5 |                 6146 |            1.40172  |           11.4687  |          0.0166667 |          0.25      |          0.416667  |           0.833333 |            504     |                    6146 |                358.074 |               500.932 |                   0   |               141     |                256.1  |                423.5  |               17551.6 |                   6146 |               27.2703 |              37.9138 |                    0 |                    5 |                   13 |                   40 |                 1043 |                          6146 |                     0.115314 |                    0.107137 |                           0 |                   0         |                   0.0988315 |                    0.178443 |                     1       |                          6146 |                   0.0114258  |                   0.0419448 |                           0 |                           0 |                           0 |                           0 |                    1        |
 
+### Here are the plots for the distributions of the columns before and after imputation:  
+#### average rating before imputation  
+
+<iframe
+src="assets/avg_rating_before_imp.html"
+width="800"
+height="600"
+frameborder="0"
+></iframe>
+
+#### average rating after imputation  
+
+<iframe
+src="assets/avg_rating_after_imp.html"
+width="800"
+height="600"
+frameborder="0"
+></iframe>
+
+#### calories before imputation  
+
+<iframe
+src="assets/calories_before_imp.html"
+width="800"
+height="600"
+frameborder="0"
+></iframe>
+
+#### calories after imputation  
+
+<iframe
+src="assets/calories_after_imp.html"
+width="800"
+height="600"
+frameborder="0"
+></iframe>
+
+#### protein before impuation  
+
+<iframe
+src="assets/protein_before_imp.html"
+width="800"
+height="600"
+frameborder="0"
+></iframe>
+
+#### protein after imputation  
+
+<iframe
+src="assets/protein_after_imp.html"
+width="800"
+height="600"
+frameborder="0"
+></iframe>
+
+#### number of ingredients before imputation  
+
+<iframe
+src="assets/n_ingredients_before_imp.html"
+width="800"
+height="600"
+frameborder="0"
+></iframe>
+
+#### number of ingredients after imputation  
+
+<iframe
+src="assets/n_ingredients_after_imp.html"
+width="800"
+height="600"
+frameborder="0"
+></iframe>
+
+#### number of steps before imputation  
+
+<iframe
+src="assets/n_steps_before_imp.html"
+width="800"
+height="600"
+frameborder="0"
+></iframe>
+
+#### number of steps after imputation  
+
+
+<iframe
+src="assets/n_steps_after_imp.html"
+width="800"
+height="600"
+frameborder="0"
+></iframe>
+
 
 ## Framing a Prediction Problem  
 We choose to reframe our driving question into a prediction problem in the following manner:  
