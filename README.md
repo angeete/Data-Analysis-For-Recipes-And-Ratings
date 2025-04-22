@@ -22,9 +22,11 @@ The fifth step for data cleaning was to investigate outlier. Particularly, there
 
 The other two outlier review also had quite high cooking times. The names of these were recipes are "how to make homemade vanilla" and "how to make homemade fruit liquers". When looking up the standard time needed to makes these recipes, they ranged from a few weeks to a few months to even years, so the high cooking times for these two recipes made sense. Therefore we decided to keep these two recipes in the dataframe. 
 
+//embed data-cleaned dataframe//  
+
 ### Univariate Plot Analyses
 #### Univariate Analysis Plot 1: Average Ratings Distribution 
-We used a histogram to showcase the average ratings distribution and from this we can see, that most of the recipies have an average rating of 5 stars. Note that we use average ratings here since ratings are given as a list as there are multiple ratings per recipe.  
+We used a histogram to showcase the average ratings distribution. From this distrubtion, we can see that most of the recipies have an average rating of 5 stars. Note that we use average ratings here since ratings are given as a list as there are multiple ratings per recipe. Because the distribution shows that most recipes receive an average rating of 5, recipes with slightly lower average ratings are more significant than we would think.
 
 <iframe
 src="assets/avg_rating_univariate.html"
@@ -33,7 +35,7 @@ height="600"
 frameborder="0"
 ></iframe>  
 #### Univariate Analysis Plot 2: Cooking Time in Hours  
-We restricted the range of the hours column when plotting this box plot so that we can clearly see the boxplot. When originally plotting the boxplot without restricting the hours column, the median and quartiles were not visible due to the extremely large scaling on the x axis for hours due to the outliers present.  
+We restricted the range of the hours column when plotting this box plot so that we can clearly see the boxplot. When originally plotting the boxplot without restricting the hours column, the median and quartiles were not visible due to the extremely large scaling on the x axis for hours due to the outliers present. Something important to note about this boxplot is that although the median cooking time in hours is 0.583 hours, there are many outliers that are far about 2 hours. This suggests that there are many recipies that have a long cooking time. 
 
 <iframe
 src="assets/cooking_hours_univariate.html"
@@ -42,7 +44,7 @@ height="600"
 frameborder="0"
 ></iframe>   
  #### Univariate Analysis Plot 3: Calories  
-We restricted the range of the calories column when plotting this box plot so that we can clearly see the boxplot. When originally plotting the boxplot without restricting the calories column, the median and quartiles were not visible due to the extremely large scaling on the x axis for calories due to the outliers present.  
+We restricted the range of the calories column when plotting this box plot so that we can clearly see the boxplot. When originally plotting the boxplot without restricting the calories column, the median and quartiles were not visible due to the extremely large scaling on the x axis for calories due to the outliers present. This boxplot has a median of 304.6 calories, but there many outliers that are above 1,000 calories. This makes sense because we do not know the serving sizes of the recipes and because many recipes vary by a very small number of calories.
 
 <iframe
 src="assets/calories_univariate.html"
@@ -51,7 +53,7 @@ height="600"
 frameborder="0"
 ></iframe>  
 #### Univariate Analysis Plot 4: Protein 
-We restricted the range of the protein column when plotting this box plot so that we can clearly see the boxplot. When originally plotting the boxplot without restricting the protein column, the median and quartiles were not visible due to the extremely large scaling on the x axis for protein due to the outliers present.  
+We restricted the range of the protein column when plotting this box plot so that we can clearly see the boxplot. When originally plotting the boxplot without restricting the protein column, the median and quartiles were not visible due to the extremely large scaling on the x axis for protein due to the outliers present. The median value for protein is 18% daily value. Again, there are many outliers that surpass 100% daily value for protein, but this could be because many recipes could have a very high serving size.
 
 <iframe
 src="assets/protein_univariate.html"
@@ -63,12 +65,21 @@ frameborder="0"
 #### Bivariate Plot 1: Number of Steps vs Average Rating  
 For this first bivariate plot, we took a look at the relation between the number of steps in a recipe and the average rating. From the plot, we can see that higher step ratings tend to be on the extreme ends of the rating distribution, either a 5 or a 2 whereas recipes with an average or low number of steps tend to have a more average-to-high rating (between 3 to 5 usually).  
 
-//embed plot//  
+<iframe
+src="assets/.html"
+width="800"
+height="600"
+frameborder="0"
+></iframe>   
 #### Bivariate Plot 2: Number of Ingredients vs Average Rating  
 For the second bivariate plot, we took a look at the relation between the number of ingredients in a recipe and the average rating. From the plot, we can see that the number of ingredients doesn't seem to play a large role in determining the average rating of a recipe as the ratings are fairly equally scattered across all numbers of ingredients.  
 
-//embed plot//
-
+<iframe
+src="assets/protein_univariate.html"
+width="800"
+height="600"
+frameborder="0"
+></iframe>  
 ### Interesting Aggregates  
 We grouped our dataframe by the number of steps in a recipe and then got the statistics for each column (excluding n_steps as this is what we grouped by) in the combined dataframe using the .describe() function.
 
@@ -76,9 +87,12 @@ Using this groupby object, we extracted the cooking time (in minutes) for each r
 
 We also used this groupby object to extract the number of ingredients for each recipe and calculated the mean number of steps for needed to complete these recipes. As expected, the general trend was that an increase in steps lead to an increase in mean number of ingredients for a recipe.
 
+//embed dataframe head//
+## Framing a Prediction Problem  
+We choose to reframe our driving question into a prediction problem in the following manner:  
+#### Given features such as number of ingredients, cooking time, nutritional information, and number of steps, can we predict the average rating of a recipe?  
+Our prediction problem is a regression type problem as we are predicting a continouous quantitative variable (average rating) based on other factors relating to the recipe in the data set. The response variable we choose for this analysis is the average rating of each recipe and we choose this variable as it provides a good indicating of public opinion of a recipe. In order to make this prediction, we will have information regarding features such as number of ingredients, cooking time, nutritional information, and number of steps, and reviews of the recipe which we will turn into quantitative columns in step 5 of our analysis.
 
-
-## Framing a Prediction Problem
 
 ## Baseline Model
 
