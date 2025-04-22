@@ -112,10 +112,62 @@ We also used this groupby object to extract the number of ingredients for each r
 ## Framing a Prediction Problem  
 We choose to reframe our driving question into a prediction problem in the following manner:  
 #### Given features such as number of ingredients, cooking time, nutritional information, and number of steps, can we predict the average rating of a recipe?  
-Our prediction problem is a regression type problem as we are predicting a continouous quantitative variable (average rating) based on other factors relating to the recipe in the data set. The response variable we choose for this analysis is the average rating of each recipe and we choose this variable as it provides a good indicating of public opinion of a recipe. In order to make this prediction, we will have information regarding features such as number of ingredients, cooking time, nutritional information, and number of steps, and reviews of the recipe which we will turn into quantitative columns in step 5 of our analysis.  
+Our prediction problem is a regression type problem as we are predicting a continouous quantitative variable (average rating) based on other factors relating to the recipe in the data set. The response variable we choose for this analysis is the average rating of each recipe and we choose this variable as it provides a good indicating of public opinion of a recipe. In order to make this prediction, we will have information regarding features such as number of ingredients, cooking time, nutritional information, and number of steps, and reviews of the recipe which we will turn into quantitative columns in step 5 of our analysis. Because this is a regression problem, we cannot use metrics like f1-score and accuracy to assess our model. Instead, we are choosing to use R^2^ for our test data as a metric to assess our model. This is a good metric to use because an R^2^ value close to 1 means that the model is very good at predicting labels, while an R^2^ value close to 0 means that the model is just as good at guessing. 
  
 ## Baseline Model  
-We used the features of protein, calories, number of steps, number of ingredients, and cooking time in hours for the design matrix in our baseline model. We decided to split our data using a 20, 80 split where 20% is the test data and 80% is the training data. We used a pipline with a standard scalar to standardize the data so that features with larger values are not overrepresented in the model. For this baseline model, we used linear regression. Even though this baseline model is preliminary, we noted that the R^2 value (-0.002352096368602785) was very low for this model and as such, we made some drastic changes on the to this model in order to come up with the final model. In order to make these changes, we also decided to look at the correlation coefficients for each of the feature columns and noticed they were very low, thus we decided to make two new columns that we will discuss in detail in the next section.
+Describe your model and state the features in your model, including how many are quantitative, ordinal, and nominal, and how you performed any necessary encodings. Report the performance of your model and whether or not you believe your current model is “good” and why.  
+ 
+We used the features of protein, calories, number of steps, number of ingredients, and cooking time in hours for the design matrix in our baseline model. All of these features are quantitative features, and we did not have to specially encode any of these features. We decided to split our data using a 20, 80 split where 20% is the test data and 80% is the training data. We used a pipline with a standard scalar to standardize the data so that features with larger values are not overrepresented in the model. For this baseline model, we used linear regression. Even though this baseline model is preliminary, the performance is still quite poor, as we noted that the R^2 value (-0.002352096368602785) was very low for this model and as such, we made some drastic changes on the to this model in order to come up with the final model. In order to make these changes, we also decided to look at the correlation coefficients for each of the feature columns:   
+protein         -0.008564  
+calories        -0.019657  
+n_steps         -0.029147  
+n_ingredients   -0.011389  
+hours           -0.011414  
+the magnitude of these correlation coefficients are very low, meaning that these features are not very closely related to average rating. Thus, we decided to make two new columns that we will discuss in detail in the next section.
 
  
-## Final Model
+## Final Model  
+In order to improve our final model from our baseline model, we first created two new columns in the dataset which we titled "positive_score" and "negative_score". Both of these columns involved looking for positive and negative words respectively in the 'reviews' column of each recipe and then assigning each recipe a postive and negative rating score using TF-IDF. We found positive and negative words be querying for ratings with high and low reviews respectively and seraching for common words in these ratings. We ensured to check the correlation coefficients for these two new rows and it is important to note that the magnitudes of the correlation coefficients for these two new columns are higher than the correlation coefficients for the other columns:  
+protein          -0.008564
+calories         -0.019657
+n_steps          -0.029147
+n_ingredients    -0.011389
+hours            -0.011414
+positive_score    0.192216
+negative_score   -0.103375  
+It makes sense that 'positive_score' and 'negative_score' would be improve our model because a review with many positive words has a high positive score, and a high positive score correlated with a positive rating. To put it simply, a positive review directly correlates with high average ratings.  
+
+With the two new columns created, we ran the linear regression model with standard scaling on the dataset ensuring to add these two new columns to the design matrix. Furthermore, we used grid serach cv with different hyper parameters and picked the best of these parameters (alpha = 100.0) to further optimize from the baseline model.  
+
+As mentioned earlier, we can note the correlation coefficients are higher for "positive_score" and "negative_score" as opposed to the other columns. We can also note the R^2^ value (0.048121109065197065) improved significantly from the baseline model even though it is still quite low. In order to improve this value, we then tried three other types of models, random forest, gradient boosting, and k-nearest neighbors. Results:  
+Model: Random Forest  
+Fitting 5 folds for each of 2 candidates, totalling 10 fits  
+Best Params: {'regressor__max_depth': 10, 'regressor__n_estimators': 100}  
+CV R^2^: [0.057 0.062 0.072 0.066 0.062]  
+Mean CV R^2^: 0.06371979713491209  
+Test R^2^: 0.06566708236730867  
+
+Model: Gradient Boosting  
+Fitting 5 folds for each of 2 candidates, totalling 10 fits  
+Best Params: {'regressor__learning_rate': 0.05, 'regressor__max_depth': 3, 'regressor__n_estimators': 100}  
+CV R^2^: [0.066 0.065 0.078 0.071 0.065]  
+Mean CV R^2: 0.0690269899324856  
+Test R^2^: 0.07016720967452794  
+
+Model: K-Nearest Neighbors  
+Fitting 5 folds for each of 2 candidates, totalling 10 fits  
+Best Params: {'regressor__n_neighbors': 10}  
+CV R^2^: [-0.024 -0.027 -0.021 -0.015 -0.031]  
+Mean CV R^2^: -0.02341088363704551  
+Test R^2^: -0.024211959508562142  
+
+The results indicate that the gradient boosting model resulted in the highest test R^2^ value so we choose this as our final model. Here are the results of our final model with Gradient Boosting as our model, standardScaling, and grid search cv:  
+Model: Gradient Boosting
+Fitting 5 folds for each of 2 candidates, totalling 10 fits
+Best Params: {'regressor__learning_rate': 0.05, 'regressor__max_depth': 3, 'regressor__n_estimators': 100}
+CV R^2^: [0.066 0.065 0.078 0.071 0.065]
+Mean CV R^2^: 0.0690269899324856
+Test R^2^: 0.07016720967452794  
+
+It is important to note that the R^2^ value of 0.07016720967452794 for this final model improved significantly from the baseline model after an extensive number of changes were made to the dataset and pipeline. Note these changes included not only adding new quantitative columns, but also using TF-IDF to deal with the only relevant qualitative column (reviews) and analyzing both positive and negative reviews. Furthermore, multiple models were used and the best of these was selected as a predictor. Even with this being the case, we can note the final R^2^ value is quite low. This result suggests that it is very difficult to accurately predict the average rating of a recipe given the data in the dataset.
+
