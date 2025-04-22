@@ -56,7 +56,7 @@ We grouped our dataframe by the number of steps in a recipe and then got the sta
 
 Using this groupby object, we extracted the cooking time (in minutes) for each recipe and calculated the mean cooking time (in minutes) to complete each recipe. As expected, the general trend was that an increase in the number of steps led to an increase in mean cooking time. It is interesting to note that recipes with 93 steps seem to deviate significantly from the trend, as the mean cooking time drops to 360 minutes from a previous mean time of 1530 minutes for 88 step recipes.  
 
-Here we extracted the number of ingredients for each recipe by the number of steps and calculated the mean number of steps to complete each recipe. As expected, the general trend was that an increase in steps lead to an increase in mean number of ingredients for a recipe.
+We also used this groupby object to extract the number of ingredients for each recipe and calculated the mean number of steps for needed to complete these recipes. As expected, the general trend was that an increase in steps lead to an increase in mean number of ingredients for a recipe.
 
 
 
