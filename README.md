@@ -1,4 +1,4 @@
-# Data-Analysis-For-Recipes-And-Ratings
+# Data Analysis For Recipes And Ratings
 A data analysis of a recipes and ratings data set as a final project for EECS 398 at the University of Michigan
 
 ## Introduction
@@ -19,13 +19,44 @@ The third step for data cleaning involved creating an 'hours' column in our comb
 
 We also ensured that all columns in the combined dataframe had no np.nan values because it would cause problems in the executing our models later on. To do this, we replaced all np.nan values with 0 as this made the most sense in context.
 
-# Outliers
-Here we were trying to investigate some of the very extreme outliers we saw in the bivariate scatter plots. We found the index and looked at the name of the recipe, and we found the title of the review was "How to preserve your husband", and it had an egregious cooking time of 17520 hours. This does not make sense at all so we removed it.  
-The other two outliers also had quite high cooking times but when we looked at the name of the recipes, their names were "how to make homemade vanilla" and "how to make homemade fruit liquers". When looking up the standard time for these recipes, they ranged from a few weeks to a few months to even years, so the high cooking times made sense. Therefore we decided to keep these datapoints in the dataset.
+### Outliers
+We also investigated three very extreme outliers we saw in the dataframe. To do this, we found the index of these reviews in the dataframe and looked at the name of these recipes. One of the reviews was titled "How to preserve your husband", and it had an egregious cooking time of 17520 hours. This review does not make sense at all, so we removed this review from the dataframe.  
 
-# Univariate Plot Analyses
+The other two outlier review also had quite high cooking times. The names of these were recipes are "how to make homemade vanilla" and "how to make homemade fruit liquers". When looking up the standard time needed to makes these recipes, they ranged from a few weeks to a few months to even years, so the high cooking times for these two recipes made sense. Therefore we decided to keep these two recipes in the dataframe. 
 
-# Bivariate Plot Analyses
+### Univariate Plot Analyses
+#### Univariate Analysis Plot 1: Average Ratings Distribution 
+We used a histogram to showcase the average ratings distribution and from this we can see, that most of the recipies have an average rating of 5 stars. Note that we use average ratings here since ratings are given as a list as there are multiple ratings per recipe.  
+
+//embed plot//  
+#### Univariate Analysis Plot 2: Cooking Time in Hours  
+We restricted the range of the hours column when plotting this box plot so that we can clearly see the boxplot. When originally plotting the boxplot without restricting the hours column, the median and quartiles were not visible due to the extremely large scaling on the x axis for hours due to the outliers present.  
+
+//embed plot//  
+#### Univariate Analysis Plot 3: Calories  
+We restricted the range of the calories column when plotting this box plot so that we can clearly see the boxplot. When originally plotting the boxplot without restricting the calories column, the median and quartiles were not visible due to the extremely large scaling on the x axis for calories due to the outliers present.  
+
+//embed plot//  
+#### Univariate Analysis Plot 4: Protein 
+We restricted the range of the protein column when plotting this box plot so that we can clearly see the boxplot. When originally plotting the boxplot without restricting the protein column, the median and quartiles were not visible due to the extremely large scaling on the x axis for protein due to the outliers present.  
+
+//embed plot//  
+### Bivariate Plot Analyses   
+#### Bivariate Plot 1: Number of Steps vs Average Rating  
+For this first bivariate plot, we took a look at the relation between the number of steps in a recipe and the average rating. From the plot, we can see that higher step ratings tend to be on the extreme ends of the rating distribution, either a 5 or a 2 whereas recipes with an average or low number of steps tend to have a more average-to-high rating (between 3 to 5 usually).  
+
+//embed plot//  
+#### Bivariate Plot 2: Number of Ingredients vs Average Rating  
+For the second bivariate plot, we took a look at the relation between the number of ingredients in a recipe and the average rating. From the plot, we can see that the number of ingredients doesn't seem to play a large role in determining the average rating of a recipe as the ratings are fairly equally scattered across all numbers of ingredients.  
+
+//embed plot//
+
+### Interesting Aggregates  
+We grouped our dataframe by the number of steps in a recipe and then got the statistics for each column (excluding n_steps as this is what we grouped by) in the combined dataframe using the .describe() function.
+
+Using this groupby object, we extracted the cooking time (in minutes) for each recipe and calculated the mean cooking time (in minutes) to complete each recipe. As expected, the general trend was that an increase in the number of steps led to an increase in mean cooking time. It is interesting to note that recipes with 93 steps seem to deviate significantly from the trend, as the mean cooking time drops to 360 minutes from a previous mean time of 1530 minutes for 88 step recipes.  
+
+Here we extracted the number of ingredients for each recipe by the number of steps and calculated the mean number of steps to complete each recipe. As expected, the general trend was that an increase in steps lead to an increase in mean number of ingredients for a recipe.
 
 
 
