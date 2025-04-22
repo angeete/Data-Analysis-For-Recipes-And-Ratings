@@ -28,39 +28,39 @@ The other two outlier review also had quite high cooking times. The names of the
 #### Univariate Analysis Plot 1: Average Ratings Distribution 
 We used a histogram to showcase the average ratings distribution and from this we can see, that most of the recipies have an average rating of 5 stars. Note that we use average ratings here since ratings are given as a list as there are multiple ratings per recipe.  
 
- <iframe
- src="assets/avg_rating_univariate.html"
- width="800"
- height="600"
- frameborder="0"
- ></iframe>  
+<iframe
+src="assets/avg_rating_univariate.html"
+width="800"
+height="600"
+frameborder="0"
+></iframe>  
 #### Univariate Analysis Plot 2: Cooking Time in Hours  
 We restricted the range of the hours column when plotting this box plot so that we can clearly see the boxplot. When originally plotting the boxplot without restricting the hours column, the median and quartiles were not visible due to the extremely large scaling on the x axis for hours due to the outliers present.  
 
- <iframe
- src="assets/cooking_hours_univariate.html"
- width="800"
- height="600"
- frameborder="0"
- ></iframe>   
+<iframe
+src="assets/cooking_hours_univariate.html"
+width="800"
+height="600"
+frameborder="0"
+></iframe>   
  #### Univariate Analysis Plot 3: Calories  
 We restricted the range of the calories column when plotting this box plot so that we can clearly see the boxplot. When originally plotting the boxplot without restricting the calories column, the median and quartiles were not visible due to the extremely large scaling on the x axis for calories due to the outliers present.  
 
- <iframe
- src="assets/calories_univariate.html"
- width="800"
- height="600"
- frameborder="0"
- ></iframe>  
+<iframe
+src="assets/calories_univariate.html"
+width="800"
+height="600"
+frameborder="0"
+></iframe>  
 #### Univariate Analysis Plot 4: Protein 
 We restricted the range of the protein column when plotting this box plot so that we can clearly see the boxplot. When originally plotting the boxplot without restricting the protein column, the median and quartiles were not visible due to the extremely large scaling on the x axis for protein due to the outliers present.  
 
- <iframe
- src="assets/protein_univariate.html"
- width="800"
- height="600"
- frameborder="0"
- ></iframe>  
+<iframe
+src="assets/protein_univariate.html"
+width="800"
+height="600"
+frameborder="0"
+></iframe>  
 ### Bivariate Plot Analyses   
 #### Bivariate Plot 1: Number of Steps vs Average Rating  
 For this first bivariate plot, we took a look at the relation between the number of steps in a recipe and the average rating. From the plot, we can see that higher step ratings tend to be on the extreme ends of the rating distribution, either a 5 or a 2 whereas recipes with an average or low number of steps tend to have a more average-to-high rating (between 3 to 5 usually).  
