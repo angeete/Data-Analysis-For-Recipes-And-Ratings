@@ -1,7 +1,7 @@
 remote_theme: pages-themes/hacker@v0.2.0
 plugins:
   - jekyll-remote-theme
-title: Hacker theme
+title: Data Analysis For Recipes and Ratings 
 description: Hacker is a theme for GitHub Pages.
 show_downloads: true
 google_analytics:
