@@ -106,6 +106,8 @@ We choose to reframe our driving question into a prediction problem in the follo
 #### Given features such as number of ingredients, cooking time, nutritional information, and number of steps, can we predict the average rating of a recipe?  
 Our prediction problem is a regression type problem as we are predicting a continouous quantitative variable (average rating) based on other factors relating to the recipe in the data set. The response variable we choose for this analysis is the average rating of each recipe and we choose this variable as it provides a good indicating of public opinion of a recipe. In order to make this prediction, we will have information regarding features such as number of ingredients, cooking time, nutritional information, and number of steps, and reviews of the recipe which we will turn into quantitative columns in step 5 of our analysis.  
  
-## Baseline Model
+## Baseline Model  
+We used the features of protein, calories, number of steps, number of ingredients, and cooking time in hours for the design matrix in our baseline model. We decided to split our data using a 20, 80 split where 20% is the test data and 80% is the training data. We used a pipline with a standard scalar to standardize the data so that features with larger values are not overrepresented in the model. For this baseline model, we used linear regression. Even though this baseline model is preliminary, we noted that the R^2 value (-0.002352096368602785) was very low for this model and as such, we made some drastic changes on the to this model in order to come up with the final model. In order to make these changes, we also decided to look at the correlation coefficients for each of the feature columns and noticed they were very low, thus we decided to make two new columns that we will discuss in detail in the next section.
+
  
 ## Final Model
